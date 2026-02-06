@@ -14,15 +14,15 @@
 
 ```bash
 # 1. Clonar repositorio
-git clone <URL_REPOSITORIO>
-cd <NOMBRE_REPOSITORIO>
+git clone https://github.com/MrYepez0710/DevsuTest.git
+cd DevsuTest/
 
 # 2. Levantar servicios
 docker-compose up -d
 
 # 3. Esperar ~30 segundos y verificar
-curl http://localhost:8080/api/actuator/health
-curl http://localhost:8081/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/actuator/health
 ```
 
 **¡Listo!** Los servicios están corriendo.
@@ -33,11 +33,13 @@ curl http://localhost:8081/api/actuator/health
 
 | Servicio | URL | Descripción |
 |----------|-----|-------------|
-| **ClientApp** | http://localhost:8080/api | Gestión de clientes |
-| **TransactionApp** | http://localhost:8081/api | Cuentas y movimientos |
-| **Swagger ClientApp** | http://localhost:8080/api/swagger-ui/index.html | Documentación API |
-| **Swagger TransactionApp** | http://localhost:8081/api/swagger-ui/index.html | Documentación API |
-| **RabbitMQ UI** | http://localhost:15672 | Usuario: guest / guest |
+| **ClientApp** | http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api | Gestión de clientes |
+| **TransactionApp** | http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api | Cuentas y movimientos |
+| **Swagger ClientApp** | http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/swagger-ui/index.html | Documentación API |
+| **Swagger TransactionApp** | http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/swagger-ui/index.html | Documentación API |
+| **RabbitMQ UI** | http://ec2-18-208-159-85.compute-1.amazonaws.com:15672 | Usuario: guest / guest |
+
+> ⚠️ **NOTA IMPORTANTE:** Las URLs mostradas corresponden a una instancia EC2 de AWS con IP pública dinámica. En caso de reinicio de la instancia, la IP cambiará y las URLs deberán actualizarse. Para uso local, reemplazar `ec2-18-208-159-85.compute-1.amazonaws.com` por `localhost`.
 
 ---
 
@@ -63,7 +65,7 @@ cd TransactionApp
 
 ### 1. Crear Cliente
 ```bash
-curl -X POST http://localhost:8080/api/clientes \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/clientes \
   -H "Content-Type: application/json" \
   -d '{
     "name": "José Lema",
@@ -80,7 +82,7 @@ curl -X POST http://localhost:8080/api/clientes \
 
 ### 2. Crear Cuenta
 ```bash
-curl -X POST http://localhost:8081/api/cuentas \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/cuentas \
   -H "Content-Type: application/json" \
   -d '{
     "accountNumber": "478758",
@@ -93,7 +95,7 @@ curl -X POST http://localhost:8081/api/cuentas \
 
 ### 3. Crear Movimiento
 ```bash
-curl -X POST http://localhost:8081/api/movimientos \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/movimientos \
   -H "Content-Type: application/json" \
   -d '{
     "accountId": 1,
@@ -106,7 +108,7 @@ curl -X POST http://localhost:8081/api/movimientos \
 
 ### 4. Generar Reporte
 ```bash
-curl "http://localhost:8081/api/reportes?clientId=JLEMA001&startDate=2026-02-01T00:00:00&endDate=2026-02-28T23:59:59"
+curl "http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/reportes?clientId=JLEMA001&startDate=2026-02-01T00:00:00&endDate=2026-02-28T23:59:59"
 ```
 
 ---
@@ -166,7 +168,7 @@ docker-compose down -v
 ### RabbitMQ
 ```bash
 # Acceder a UI
-open http://localhost:15672
+open http://ec2-18-208-159-85.compute-1.amazonaws.com:15672
 # Usuario: guest / Contraseña: guest
 
 # Ver logs

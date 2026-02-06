@@ -18,13 +18,14 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:8080/actuator/health",
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/actuator/health",
                   "protocol": "http",
                   "host": [
-                    "localhost"
+                    "{{servidor}}"
                   ],
-                  "port": "8080",
+                  "port": "{{puerto_clientapp}}",
                   "path": [
+                    "api",
                     "actuator",
                     "health"
                   ]
@@ -203,13 +204,14 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:8081/actuator/health",
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/actuator/health",
                   "protocol": "http",
                   "host": [
-                    "localhost"
+                    "{{servidor}}"
                   ],
-                  "port": "8081",
+                  "port": "{{puerto_transactionapp}}",
                   "path": [
+                    "api",
                     "actuator",
                     "health"
                   ]
@@ -227,7 +229,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"accountNumber\": \"585545\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 1000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JLEMA001\"\r\n}",
+                  "raw": "{\r\n  \"accountNumber\": \"58554522\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 1000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JLEMA0012345\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1182,7 +1184,7 @@
                   }
                 },
                 "url": {
-                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas/1",
                   "protocol": "http",
                   "host": [
                     "{{servidor}}"
@@ -1190,7 +1192,8 @@
                   "port": "{{puerto_transactionapp}}",
                   "path": [
                     "api",
-                    "cuentas"
+                    "cuentas",
+                    "1"
                   ]
                 }
               },
@@ -1200,7 +1203,21 @@
               "name": "Consulta Cliente por ClientID",
               "request": {
                 "method": "GET",
-                "header": []
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/by-clientId/JLEMA001",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "by-clientId",
+                    "JLEMA001"
+                  ]
+                }
               },
               "response": []
             },
@@ -1541,6 +1558,11 @@
     {
       "key": "puerto_transactionapp",
       "value": ""
+    },
+    {
+      "key": "servidor_local",
+      "value": "",
+      "type": "default"
     }
   ]
 }

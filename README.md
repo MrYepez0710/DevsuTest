@@ -145,9 +145,11 @@ Sistema bancario distribuido que gestiona clientes, cuentas bancarias y movimien
 ### Paso 1: Clonar el Repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_REPOSITORIO>
+git clone https://github.com/MrYepez0710/DevsuTest.git
+cd DevsuTest/
 ```
+
+> ⚠️ **NOTA IMPORTANTE:** Este proyecto está desplegado en AWS EC2 con IP pública dinámica (`ec2-18-208-159-85.compute-1.amazonaws.com`). En caso de reinicio de la instancia, la IP cambiará y todas las URLs del documento deberán actualizarse. Para ejecución local, reemplazar la URL de AWS por `localhost` en todos los comandos.
 
 ### Paso 2: Estructura del Proyecto
 
@@ -242,10 +244,10 @@ docker exec -it clientdb psql -U postgres
 
 ```bash
 # Health check ClientApp
-curl http://localhost:8080/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/actuator/health
 
 # Health check TransactionApp
-curl http://localhost:8081/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/actuator/health
 ```
 
 Ambos deben responder: `{"status":"UP"}`
@@ -267,20 +269,20 @@ docker-compose up -d clientdb transactiondb rabbitmq redis
 
 **Para ClientApp:**
 ```bash
-export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/devsu_clients_bd
+export SPRING_DATASOURCE_URL=jdbc:postgresql://ec2-18-208-159-85.compute-1.amazonaws.com:5432/devsu_clients_bd
 export SPRING_DATASOURCE_USERNAME=postgres
 export SPRING_DATASOURCE_PASSWORD=system
-export SPRING_RABBITMQ_HOST=localhost
+export SPRING_RABBITMQ_HOST=ec2-18-208-159-85.compute-1.amazonaws.com
 ```
 
 **Para TransactionApp:**
 ```bash
-export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/devsu_transactions_bd
+export SPRING_DATASOURCE_URL=jdbc:postgresql://ec2-18-208-159-85.compute-1.amazonaws.com:5433/devsu_transactions_bd
 export SPRING_DATASOURCE_USERNAME=postgres
 export SPRING_DATASOURCE_PASSWORD=system
-export SPRING_RABBITMQ_HOST=localhost
-export SPRING_REDIS_HOST=localhost
-export CLIENTAPP_URL=http://localhost:8080/api
+export SPRING_RABBITMQ_HOST=ec2-18-208-159-85.compute-1.amazonaws.com
+export SPRING_REDIS_HOST=ec2-18-208-159-85.compute-1.amazonaws.com
+export CLIENTAPP_URL=http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api
 ```
 
 #### 3. Ejecutar los microservicios
@@ -433,7 +435,7 @@ GET /api/reportes?clientId=JLEMA001&startDate=2026-02-01T00:00:00&endDate=2026-0
 
 ```bash
 # José Lema
-curl -X POST http://localhost:8080/api/clientes \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/clientes \
   -H "Content-Type: application/json" \
   -d '{
     "name": "José Lema",
@@ -448,7 +450,7 @@ curl -X POST http://localhost:8080/api/clientes \
   }'
 
 # Marianela Montalvo
-curl -X POST http://localhost:8080/api/clientes \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/clientes \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Marianela Montalvo",
@@ -467,7 +469,7 @@ curl -X POST http://localhost:8080/api/clientes \
 
 ```bash
 # Cuenta de ahorros para José Lema
-curl -X POST http://localhost:8081/api/cuentas \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/cuentas \
   -H "Content-Type: application/json" \
   -d '{
     "accountNumber": "478758",
@@ -478,7 +480,7 @@ curl -X POST http://localhost:8081/api/cuentas \
   }'
 
 # Cuenta corriente para Marianela Montalvo
-curl -X POST http://localhost:8081/api/cuentas \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/cuentas \
   -H "Content-Type: application/json" \
   -d '{
     "accountNumber": "225487",
@@ -493,7 +495,7 @@ curl -X POST http://localhost:8081/api/cuentas \
 
 ```bash
 # Retiro de 575 de la cuenta 478758
-curl -X POST http://localhost:8081/api/movimientos \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/movimientos \
   -H "Content-Type: application/json" \
   -d '{
     "accountId": 1,
@@ -504,7 +506,7 @@ curl -X POST http://localhost:8081/api/movimientos \
   }'
 
 # Depósito de 600 en la cuenta 225487
-curl -X POST http://localhost:8081/api/movimientos \
+curl -X POST http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/movimientos \
   -H "Content-Type: application/json" \
   -d '{
     "accountId": 2,
@@ -518,7 +520,7 @@ curl -X POST http://localhost:8081/api/movimientos \
 ### Caso 4: Generar Reporte
 
 ```bash
-curl "http://localhost:8081/api/reportes?clientId=JLEMA001&startDate=2026-02-01T00:00:00&endDate=2026-02-28T23:59:59"
+curl "http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/reportes?clientId=JLEMA001&startDate=2026-02-01T00:00:00&endDate=2026-02-28T23:59:59"
 ```
 
 ---
@@ -597,8 +599,8 @@ El proyecto incluye **3 escenarios** de pruebas de integración end-to-end usand
 docker-compose up -d
 
 # Verificar que los servicios están activos
-curl http://localhost:8080/api/actuator/health
-curl http://localhost:8081/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/actuator/health
+curl http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/actuator/health
 ```
 
 #### Ejecutar solo tests de integración
@@ -647,8 +649,8 @@ TransactionApp/src/test/java/karate/
 
 Una vez que los servicios estén corriendo:
 
-- **ClientApp:** http://localhost:8080/api/swagger-ui/index.html
-- **TransactionApp:** http://localhost:8081/api/swagger-ui/index.html
+- **ClientApp:** http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/swagger-ui/index.html
+- **TransactionApp:** http://ec2-18-208-159-85.compute-1.amazonaws.com:8081/api/swagger-ui/index.html
 
 ### Características de Swagger
 
@@ -713,7 +715,7 @@ docker-compose restart clientdb transactiondb
 docker-compose logs rabbitmq
 
 # Acceder a la consola de administración
-# http://localhost:15672
+# http://ec2-18-208-159-85.compute-1.amazonaws.com:15672
 # Usuario: guest
 # Contraseña: guest
 
@@ -740,7 +742,7 @@ docker-compose restart redis
 
 **Verificar:**
 1. El servicio está corriendo: `docker-compose ps`
-2. La URL es correcta: `http://localhost:8080/api/swagger-ui/index.html`
+2. La URL es correcta: `http://ec2-18-208-159-85.compute-1.amazonaws.com:8080/api/swagger-ui/index.html`
 3. El context path `/api` está incluido
 4. Ver logs: `docker-compose logs clientapp`
 
@@ -764,7 +766,7 @@ docker-compose down -v
 ## 📊 Monitoreo y Administración
 
 ### RabbitMQ Management Console
-- **URL:** http://localhost:15672
+- **URL:** http://ec2-18-208-159-85.compute-1.amazonaws.com:15672
 - **Usuario:** guest
 - **Contraseña:** guest
 
@@ -833,7 +835,3 @@ Para preguntas o problemas:
 ## 📄 Licencia
 
 Este proyecto fue desarrollado como parte de una prueba técnica para Devsu.
-
----
-
-**¡Listo! El sistema está completamente funcional y documentado.** 🚀

@@ -76,11 +76,17 @@ public class ClientServiceClient {
             }
             
         } catch (Exception e) {
-            log.error("Error calling ClientApp for client: {}", clientId, e);
+            log.error("Unable to retrieve client information for clientId: {}", clientId, e);
+            // No usar fallback - lanzar excepción si cliente no existe
+            throw new com.devsu.domain.exception.ResourceNotFoundException(
+                "Client with clientId " + clientId + " not found"
+            );
         }
         
-        // 3. Fallback if REST call fails
-        log.warn("Using fallback for client: {}", clientId);
-        return clientCacheService.getClientWithFallback(clientId);
+        // Si llegamos aquí, clientDTO es null
+        log.error("Client with clientId {} does not exist in the system", clientId);
+        throw new com.devsu.domain.exception.ResourceNotFoundException(
+            "Client with clientId " + clientId + " not found"
+        );
     }
 }
