@@ -1,0 +1,1546 @@
+{
+  "info": {
+    "_postman_id": "d5811b41-68bb-407e-86e1-aac5c6f49ce6",
+    "name": "Devsu-Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10807145"
+  },
+  "item": [
+    {
+      "name": "Servicios",
+      "item": [
+        {
+          "name": "ClientApp",
+          "item": [
+            {
+              "name": "Client-Health",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/actuator/health",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "actuator",
+                    "health"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear clientes",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"José Lema\",\r\n  \"gender\": \"M\",\r\n  \"age\": 35,\r\n  \"idNumber\": \"1234567890\",\r\n  \"address\": \"Otavalo sn y principal\",\r\n  \"phone\": \"098254785\",\r\n  \"clientId\": \"JLEMA001\",\r\n  \"password\": \"1234\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "listar clientes",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar cliente por id",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar cliente",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"José Antonio Lema\",\r\n  \"gender\": \"M\",\r\n  \"age\": 36,\r\n  \"idNumber\": \"1234567890\",\r\n  \"address\": \"Nueva Dirección 123\",\r\n  \"phone\": \"098254785\",\r\n  \"clientId\": \"JLEMA001\",\r\n  \"password\": \"1234\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "buscar cliente por clientID",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/by-clientId/JLEMA001",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "by-clientId",
+                    "JLEMA001"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar cliente",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/3",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "TransactionApp",
+          "item": [
+            {
+              "name": "Transaction-Health",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/actuator/health",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "actuator",
+                    "health"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuentas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"585545\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 1000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JLEMA001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "listar cuentas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultar cuentas por usuario",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas?clientId=JLEMA001",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "JLEMA001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear movimientos",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 4,\r\n  \"movementDate\": \"2026-02-04T13:00:00\",\r\n  \"movementType\": \"Retiro de 540\",\r\n  \"amount\": -540.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "listar movimientos",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "reportes estado cuenta ",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/reportes?clientId=JOSORIO001&startDate=2026-02-04T00:00:00&endDate=2026-02-04T23:59:59",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "JOSORIO001",
+                      "type": "text"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-02-04T00:00:00",
+                      "type": "text"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-02-04T23:59:59",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "actualizar cuentas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"accountNumber\": \"478758\",\r\n    \"accountType\": \"Ahorros\",\r\n    \"initialBalance\": 2000.0,\r\n    \"state\": false,\r\n    \"clientId\": \"JLEMA001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas/1",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultar cuentas por numero",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas/numero/478758",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "numero",
+                    "478758"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultar movimientos por cuenta",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos?accountId=1",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pull_Pruebas",
+      "item": [
+        {
+          "name": "01. Crear Cuentas",
+          "item": [
+            {
+              "name": "cliente 1 exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"José Lema\",\r\n  \"gender\": \"M\",\r\n  \"age\": 35,\r\n  \"idNumber\": \"1234567890\",\r\n  \"address\": \"Otavalo sn y principal\",\r\n  \"phone\": \"098254785\",\r\n  \"clientId\": \"JLEMA001\",\r\n  \"password\": \"1234\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "cliente 2 exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Marianela Montalvo\",\r\n  \"gender\": \"F\",\r\n  \"age\": 28,\r\n  \"idNumber\": \"0987654321\",\r\n  \"address\": \"Amazonas y NNUU\",\r\n  \"phone\": \"097548965\",\r\n  \"clientId\": \"MMONTALVO001\",\r\n  \"password\": \"5678\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "cliente 3 exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Juan Osorio\",\r\n  \"gender\": \"M\",\r\n  \"age\": 42,\r\n  \"idNumber\": \"1122334455\",\r\n  \"address\": \"13 de junio y equinoccial\",\r\n  \"phone\": \"098874587\",\r\n  \"clientId\": \"JOSORIO001\",\r\n  \"password\": \"1245\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta clientes",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "02. Crear Cuentas",
+          "item": [
+            {
+              "name": "crear cuenta 1 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"478758\",\r\n  \"accountType\": \"Ahorros\",\r\n  \"initialBalance\": 2000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JLEMA001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuenta 2 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"225487\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 100.0,\r\n  \"state\": true,\r\n  \"clientId\": \"MMONTALVO001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuenta 3 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"495878\",\r\n  \"accountType\": \"Ahorros\",\r\n  \"initialBalance\": 0.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JOSORIO001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuenta 4 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"496825\",\r\n  \"accountType\": \"Ahorros\",\r\n  \"initialBalance\": 540.0,\r\n  \"state\": true,\r\n  \"clientId\": \"MMONTALVO001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta cuentas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "03. Crear Cuenta Extra",
+          "item": [
+            {
+              "name": "crear cuenta 5 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"585545\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 1000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"JLEMA001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta cuentas",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta cuentas por cliente especifico",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas?clientId=JLEMA001",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "JLEMA001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "04. Crear Movimientos",
+          "item": [
+            {
+              "name": "Crear movimiento 1 Exitoso",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 1,\r\n  \"movementDate\": \"2026-02-04T10:00:00\",\r\n  \"movementType\": \"Retiro de 575\",\r\n  \"amount\": -575.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear movimiento 2 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 2,\r\n  \"movementDate\": \"2026-02-04T11:00:00\",\r\n  \"movementType\": \"Deposito de 600\",\r\n  \"amount\": 600.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear movimiento 3 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 3,\r\n  \"movementDate\": \"2026-02-04T12:00:00\",\r\n  \"movementType\": \"Deposito de 150\",\r\n  \"amount\": 150.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear movimiento 4 Exitoso",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 4,\r\n  \"movementDate\": \"2026-02-04T13:00:00\",\r\n  \"movementType\": \"Retiro de 540\",\r\n  \"amount\": -540.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultar movimientos",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "05. Reportes",
+          "item": [
+            {
+              "name": "consulta reportes 1",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/reportes?clientId=MMONTALVO001&startDate=2026-02-04T00:00:00&endDate=2026-02-04T23:59:59",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "MMONTALVO001",
+                      "type": "text"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-02-04T00:00:00",
+                      "type": "text"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-02-04T23:59:59",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta reportes 2",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/reportes?clientId=JLEMA001&startDate=2026-02-04T00:00:00&endDate=2026-02-04T23:59:59",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "JLEMA001",
+                      "type": "text"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-02-04T00:00:00",
+                      "type": "text"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-02-04T23:59:59",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consulta reportes 3",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/reportes?clientId=JOSORIO001&startDate=2026-02-04T00:00:00&endDate=2026-02-04T23:59:59",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "JOSORIO001",
+                      "type": "text"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-02-04T00:00:00",
+                      "type": "text"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-02-04T23:59:59",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "06. Actualizar Datos",
+          "item": [
+            {
+              "name": "Actualizar Cliente 1",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"José Antonio Lema\",\r\n  \"gender\": \"M\",\r\n  \"age\": 36,\r\n  \"idNumber\": \"1234567890\",\r\n  \"address\": \"Nueva Dirección 123\",\r\n  \"phone\": \"098254785\",\r\n  \"clientId\": \"JLEMA001\",\r\n  \"password\": \"1234\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "actualizar cuenta 1",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"478758\",\r\n  \"accountType\": \"Ahorros\",\r\n  \"initialBalance\": 2000.0,\r\n  \"state\": false,\r\n  \"clientId\": \"JLEMA001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Consulta Cliente por ClientID",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "consultar cuenta por numero",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_transactionapp}}/api/cuentas/numero/478758",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "numero",
+                    "478758"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultar movimientos por accountID",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos?accountId=1",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "07. Eliminar Cliente",
+          "item": [
+            {
+              "name": "Eliminar Cliente",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/3",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Consulta Cliente por ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://{{servidor}}:{{puerto_clientapp}}/api/clientes/3",
+                  "protocol": "http",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "08. Validaciones",
+          "item": [
+            {
+              "name": "crear retiro - saldo insuficiente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 2,\r\n  \"movementDate\": \"2026-02-04T14:00:00\",\r\n  \"movementType\": \"Retiro de 1000\",\r\n  \"amount\": -1000.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cliente con ID Duplicado",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Cliente Duplicado\",\r\n  \"gender\": \"M\",\r\n  \"age\": 30,\r\n  \"idNumber\": \"9999999999\",\r\n  \"address\": \"Dirección Test\",\r\n  \"phone\": \"099999999\",\r\n  \"clientId\": \"JLEMA001\",\r\n  \"password\": \"test123\",\r\n  \"state\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_clientapp}}/api/clientes",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_clientapp}}",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuenta con numero duplicado",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"478758\",\r\n  \"accountType\": \"Corriente\",\r\n  \"initialBalance\": 500.0,\r\n  \"state\": true,\r\n  \"clientId\": \"MMONTALVO001\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear cuenta con cliente inexistente",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountNumber\": \"999999\",\r\n  \"accountType\": \"Ahorros\",\r\n  \"initialBalance\": 1000.0,\r\n  \"state\": true,\r\n  \"clientId\": \"CLIENTEINEXISTENTE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/cuentas",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear movimiento cuenta inexistente",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"accountId\": 999,\r\n  \"movementDate\": \"2026-02-04T15:00:00\",\r\n  \"movementType\": \"Deposito de 100\",\r\n  \"amount\": 100.0,\r\n  \"state\": \"Activo\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/movimientos",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "crear reporte cliente inexistente",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{servidor}}:{{puerto_transactionapp}}/api/reportes?clientId=CLIENTEINEXISTENTE&startDate=2026-02-04T00:00:00&endDate=2026-02-04T23:59:59",
+                  "host": [
+                    "{{servidor}}"
+                  ],
+                  "port": "{{puerto_transactionapp}}",
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "CLIENTEINEXISTENTE",
+                      "type": "text"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-02-04T00:00:00",
+                      "type": "text"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-02-04T23:59:59",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "servidor",
+      "value": ""
+    },
+    {
+      "key": "puerto_clientapp",
+      "value": ""
+    },
+    {
+      "key": "puerto_transactionapp",
+      "value": ""
+    }
+  ]
+}

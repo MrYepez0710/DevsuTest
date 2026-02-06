@@ -1,0 +1,159 @@
+# version: '3.8'
+
+services:
+  # PostgreSQL for ClientApp
+  clientdb:
+    image: postgres:15-alpine
+    container_name: clientdb
+    environment:
+      POSTGRES_DB: devsu_clients_bd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: system
+    ports:
+      - "5432:5432"
+    volumes:
+      - clientdb_data:/var/lib/postgresql/data
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PostgreSQL for TransactionApp
+  transactiondb:
+    image: postgres:15-alpine
+    container_name: transactiondb
+    environment:
+      POSTGRES_DB: devsu_transactions_bd
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: system
+    ports:
+      - "5433:5432"
+    volumes:
+      - transactiondb_data:/var/lib/postgresql/data
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"   # AMQP protocol
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes
+
+  # ClientApp Microservice
+  clientapp:
+    build:
+      context: ./ClientApp
+      dockerfile: Dockerfile
+    container_name: clientapp
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://clientdb:5432/devsu_clients_bd
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: system
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    ports:
+      - "8080:8080"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      clientdb:
+        condition: service_healthy
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: on-failure
+
+  # TransactionApp Microservice
+  transactionapp:
+    build:
+      context: ./TransactionApp
+      dockerfile: Dockerfile
+    container_name: transactionapp
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://transactiondb:5432/devsu_transactions_bd
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: system
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      CLIENTAPP_URL: http://clientapp:8080/api
+    ports:
+      - "8081:8081"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      transactiondb:
+        condition: service_healthy
+      clientapp:
+        condition: service_healthy
+    networks:
+      - devsu-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/api/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: on-failure
+
+volumes:
+  clientdb_data:
+  transactiondb_data:
+  rabbitmq_data:
+  redis_data:
+
+networks:
+  devsu-network:
+    driver: bridge
